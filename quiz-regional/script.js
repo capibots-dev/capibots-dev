@@ -11,7 +11,7 @@ let participante = {
 };
 
 // Configurações do timer
-const TEMPO_QUIZ_SEGUNDOS = 100; // 5 minutos (300 segundos) - PARÂMETRO CONFIGURÁVEL
+const TEMPO_QUIZ_SEGUNDOS = 150; // 5 minutos (300 segundos) - PARÂMETRO CONFIGURÁVEL
 let timerInterval = null;
 let tempoRestante = TEMPO_QUIZ_SEGUNDOS;
 let timerIniciado = false;
