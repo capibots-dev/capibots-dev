@@ -258,49 +258,63 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 ═══════════════════════════════════════════ */
 @media (max-width: 600px) {
 
-  /* Shell: allow vertical scroll per slide */
+  /* ── Shell ── */
   html,body{overflow:hidden}
   #presentation{overflow:hidden}
-  .slide{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+  /* Todos os slides rolam verticalmente */
+  .slide{
+    overflow-y:auto;overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;
+    /* padding-bottom extra garante que conteúdo não fique atrás da barra de nav */
+    padding-bottom:0;
+  }
 
-  /* Nav buttons — smaller, closer to edges */
-  #nav-prev,#nav-next{width:36px;height:36px;font-size:15px;top:auto;bottom:60px;transform:none}
+  /* ── Barra de nav — fixa na base ── */
+  #nav-prev,#nav-next{
+    width:36px;height:36px;font-size:15px;
+    top:auto !important;bottom:58px;
+    transform:none !important;
+  }
   #nav-prev{left:12px}
   #nav-next{right:12px}
   #slide-counter{bottom:14px;gap:6px}
   .dot{width:6px;height:6px}
   #keyhint{display:none}
-  /* Reset transform on nav that was set for vertical centering */
-  #nav-prev,#nav-next{transform:none !important}
 
-  /* ── SLIDE 1: CAPA ── */
-  .s1{flex-direction:column}
+  /* ══════════════════════════════════
+     SLIDE 1 — CAPA
+  ══════════════════════════════════ */
+  .s1{flex-direction:column;overflow-y:auto}
   .s1-left{
     width:100%;flex-shrink:0;
-    padding:36px 28px 28px;
+    padding:32px 24px 24px;
     min-height:auto;
     flex-direction:row;align-items:center;justify-content:space-between;
   }
   .s1-left::before{width:260px;height:260px;bottom:-100px;right:-80px}
   .s1-left::after{width:120px;height:120px;top:-30px;left:-40px}
   .s1-logo{flex-direction:row;align-items:center;gap:14px}
-  .s1-logo img{width:70px;height:70px}
+  .s1-logo img{width:68px;height:68px}
   .s1-school{font-size:10px;letter-spacing:1px;text-align:right;max-width:140px;line-height:1.4}
-  .s1-right{padding:24px 24px 80px;gap:20px}
+  .s1-right{padding:22px 22px 90px;gap:18px;flex:none}
   .s1-label{font-size:10px;letter-spacing:2px}
-  .s1-headline{font-size:30px;line-height:1.15}
+  .s1-headline{font-size:28px;line-height:1.15}
   .s1-desc{font-size:13px;line-height:1.65;max-width:100%}
   .s1-badges{gap:7px}
   .badge{font-size:11px;padding:5px 12px}
 
-  /* ── SLIDE TBR ── */
-  .s_tbr{flex-direction:column}
+  /* ══════════════════════════════════
+     SLIDE TBR — O TORNEIO
+  ══════════════════════════════════ */
+  .s_tbr{flex-direction:column;overflow-y:auto}
   .s_tbr-left{
-    padding:36px 24px 20px;border-right:none;
+    flex:none;
+    padding:32px 22px 18px;
+    border-right:none;
     border-bottom:1px solid rgba(255,255,255,0.07);
   }
-  .s_tbr-right{padding:20px 24px 80px}
-  .s_tbr-title{font-size:26px}
+  .s_tbr-right{flex:none;padding:18px 22px 90px}
+  .s_tbr-title{font-size:24px}
   .s_tbr-desc{font-size:13px}
   .s_tbr-cards{grid-template-columns:1fr;gap:8px}
   .s_tbr-card{padding:12px}
@@ -315,113 +329,197 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
   .s_tbr-theme{padding:14px 18px}
   .s_tbr-theme-title{font-size:24px}
   .s_tbr-theme-sub{font-size:12px}
+  .s_tbr-overline{font-size:10px;letter-spacing:2px}
 
-  /* ── SLIDE 2: QUEM SOMOS ── */
-  .s2{padding:36px 22px 80px;justify-content:flex-start}
-  .sec-title{font-size:26px;margin-bottom:20px}
-  .s2-grid{grid-template-columns:1fr;gap:20px}
-  .quem-text{font-size:13px}
-  .stats{grid-template-columns:1fr 1fr;gap:10px}
+  /* ══════════════════════════════════
+     SLIDE 2 — QUEM SOMOS
+     (scroll vertical habilitado)
+  ══════════════════════════════════ */
+  .s2{
+    flex-direction:column;
+    justify-content:flex-start;
+    padding:32px 22px 90px;  /* espaço embaixo para nav */
+    overflow-y:auto;
+  }
+  .sec-title{font-size:24px;margin-bottom:16px}
+  .sec-label{font-size:10px;letter-spacing:2px;margin-bottom:8px}
+  .s2-grid{grid-template-columns:1fr;gap:18px}
+  .quem-text{font-size:13px;margin-bottom:14px}
+  .stats{grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
   .stat-card{padding:14px 12px;border-radius:10px}
-  .stat-n{font-size:24px}
+  .stat-n{font-size:22px}
   .stat-l{font-size:11px}
-  .vi{padding:12px}
-  .vi-icon{width:32px;height:32px;font-size:15px;border-radius:8px}
+  .values{gap:10px}
+  .vi{padding:12px;border-radius:10px}
+  .vi-icon{width:32px;height:32px;font-size:14px;border-radius:8px}
   .vi-t{font-size:12px}
   .vi-d{font-size:11px}
 
-  /* ── SLIDE A: EQUIPE FOTOS ── */
-  .s2b{flex-direction:column}
-  .s2b-left{flex:none;height:220px;width:100%;border-radius:0}
-  .s2b-right{padding:24px 22px 80px;gap:14px}
-  .s2b-right .sec-title{font-size:22px}
-  .s2b-grid2{gap:6px}
-  .s2b-grid2 img{height:110px;border-radius:8px}
-
-  /* ── SLIDE 3: CONQUISTAS ── */
-  .s3{padding:36px 22px 80px;justify-content:flex-start}
-  .s3-grid{grid-template-columns:1fr;gap:12px;margin-top:16px}
-  .tc{padding:18px 16px;border-radius:14px}
-  .tc.nat{
-    grid-column:1;display:flex;flex-direction:column;gap:12px;
-    padding:20px 18px;
+  /* ══════════════════════════════════
+     SLIDE A — EQUIPE FOTOS
+     Imagem topo (destaque) + conteúdo abaixo com scroll
+  ══════════════════════════════════ */
+  .s2b{
+    flex-direction:column;
+    overflow-y:auto;
   }
-  .tc-icon.big{font-size:52px}
-  .tc-name.big{font-size:20px}
+  .s2b-left{
+    flex:none;
+    width:100%;
+    height:52vw;   /* ~52% da largura — foto destaque generosa */
+    min-height:200px;
+    max-height:260px;
+    overflow:hidden;
+    position:relative;
+  }
+  /* gradiente suave na base da foto para transição ao conteúdo */
+  .s2b-left::after{
+    content:'';position:absolute;bottom:0;left:0;right:0;height:40px;
+    background:linear-gradient(to bottom,transparent,#111);
+  }
+  .s2b-right{
+    flex:none;
+    padding:22px 22px 90px;
+    gap:14px;
+    justify-content:flex-start;
+  }
+  .s2b-right .sec-title{color:white;font-size:21px}
+  .s2b-right .sec-label{color:var(--orange-light)}
+  .s2b-grid2{gap:6px}
+  .s2b-grid2 img{height:100px;border-radius:8px}
+
+  /* ══════════════════════════════════
+     SLIDE 3 — CONQUISTAS
+  ══════════════════════════════════ */
+  .s3{padding:32px 22px 90px;justify-content:flex-start;overflow-y:auto}
+  .s3-grid{grid-template-columns:1fr;gap:12px;margin-top:14px}
+  .tc{padding:16px 14px;border-radius:14px}
+  .tc.nat{
+    grid-column:1;
+    display:flex;flex-direction:column;gap:10px;
+    padding:18px 16px;
+  }
+  .tc-icon{font-size:40px}
+  .tc-icon.big{font-size:48px}
   .tc-name{font-size:16px}
+  .tc-name.big{font-size:19px}
   .tc-desc{font-size:11.5px}
   .nat-badge{font-size:9px}
 
-  /* ── SLIDE B: PÓDIO FOTOS ── */
-  .s3b{flex-direction:column}
+  /* ══════════════════════════════════
+     SLIDE B — PÓDIO FOTOS
+     Imagem topo + conteúdo com scroll
+  ══════════════════════════════════ */
+  .s3b{
+    flex-direction:column;
+    overflow-y:auto;
+  }
   .s3b-photos{
-    flex:none;height:220px;width:100%;
-    grid-template-columns:1fr 1fr;grid-template-rows:1fr;
+    flex:none;
+    width:100%;
+    height:52vw;
+    min-height:200px;
+    max-height:260px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:1fr;
+    overflow:hidden;
   }
   .s3b-photos img:first-child{grid-row:1}
-  .s3b-content{padding:24px 22px 80px;gap:14px}
-  .s3b-content .sec-title{font-size:22px;max-width:100%}
+  .s3b-content{
+    flex:none;
+    padding:22px 22px 90px;
+    gap:14px;
+    justify-content:flex-start;
+  }
+  .s3b-content .sec-title{font-size:21px;max-width:100%}
+  /* foto extra dentro do conteúdo */
+  .s3b-content img{height:130px !important;width:100%;object-fit:cover;border-radius:10px}
 
-  /* ── SLIDE 4: VISIBILIDADE ── */
-  .s4{padding:36px 22px 80px;justify-content:flex-start}
-  .s4-grid{grid-template-columns:1fr;gap:20px;margin-top:16px}
+  /* ══════════════════════════════════
+     SLIDE 4 — VISIBILIDADE
+  ══════════════════════════════════ */
+  .s4{padding:32px 22px 90px;justify-content:flex-start;overflow-y:auto}
+  .s4-grid{grid-template-columns:1fr;gap:18px;margin-top:14px}
   .mr{padding:14px 16px;gap:12px;border-radius:12px}
   .mi{width:38px;height:38px;font-size:17px;border-radius:9px}
   .mv{font-size:20px}
   .ml{font-size:11px}
-  .exp-box{padding:22px 20px;border-radius:16px}
-  .exp-t{font-size:16px;margin-bottom:12px}
-  .exp-i{font-size:12px;margin-bottom:10px}
+  .exp-box{padding:20px 18px;border-radius:16px}
+  .exp-t{font-size:15px;margin-bottom:12px}
+  .exp-i{font-size:12px;margin-bottom:9px}
 
-  /* ── SLIDE C: MÍDIA FOTOS ── */
-  .s_pat{flex-direction:column}
-  .s_pat-img{flex:none;height:200px;width:100%}
-  .s_pat-img::after{background:linear-gradient(180deg,transparent 60%,#111 100%)}
-  .s_pat-content{padding:24px 22px 80px}
-  .s_pat-content .sec-title{font-size:22px}
-  .s_pat-shirts{grid-template-columns:1fr 1fr;gap:6px}
-  .s_pat-shirts img{height:90px;border-radius:8px}
+  /* ══════════════════════════════════
+     SLIDE C — MÍDIA / PATROCÍNIO FOTOS
+     Imagem topo + conteúdo com scroll
+  ══════════════════════════════════ */
+  .s_pat{
+    flex-direction:column;
+    overflow-y:auto;
+  }
+  .s_pat-img{
+    flex:none;
+    width:100%;
+    height:52vw;
+    min-height:200px;
+    max-height:260px;
+    position:relative;
+    overflow:hidden;
+  }
+  /* gradiente vai para baixo agora (layout vertical) */
+  .s_pat-img::after{
+    background:linear-gradient(to bottom,transparent 55%,#111 100%);
+  }
+  .s_pat-content{
+    flex:none;
+    padding:22px 22px 90px;
+    gap:14px;
+    justify-content:flex-start;
+  }
+  .s_pat-content .sec-title{font-size:21px}
+  .s_pat-shirts{grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+  .s_pat-shirts img{height:85px;border-radius:8px}
 
-  /* ── SLIDE 5: COTAS ── */
-  .s5{padding:36px 22px 80px;justify-content:flex-start}
-  .s5 .sec-title{font-size:24px}
-  .cotas{grid-template-columns:1fr;gap:14px;margin-top:16px}
+  /* ══════════════════════════════════
+     SLIDE 5 — COTAS
+  ══════════════════════════════════ */
+  .s5{padding:32px 22px 90px;justify-content:flex-start;overflow-y:auto}
+  .s5 .sec-title{font-size:22px}
+  .cotas{grid-template-columns:1fr;gap:14px;margin-top:14px}
   .cc{padding:20px 18px;border-radius:14px}
   .cn{font-size:22px}
   .cp{font-size:26px}
   .cb{font-size:11px}
   .s5-note{font-size:10px;margin-top:12px}
 
-  /* ── SLIDE 6: POR QUE APOIAR ── */
-  .s6{padding:36px 22px 80px;justify-content:flex-start}
-  .s6 .sec-title{font-size:24px}
-  .pq-grid{grid-template-columns:1fr;gap:10px;margin-top:16px}
+  /* ══════════════════════════════════
+     SLIDE 6 — POR QUE APOIAR
+  ══════════════════════════════════ */
+  .s6{padding:32px 22px 90px;justify-content:flex-start;overflow-y:auto}
+  .s6 .sec-title{font-size:22px}
+  .pq-grid{grid-template-columns:1fr;gap:10px;margin-top:14px}
   .pqc{padding:16px;border-radius:14px}
   .pqi{font-size:26px;margin-bottom:8px}
   .pqt{font-size:14px;margin-bottom:5px}
   .pqd{font-size:12px}
 
-  /* ── SLIDE 7: CONTATO ── */
-  .s7{padding:36px 22px 80px;justify-content:flex-start}
-  .s7-grid{grid-template-columns:1fr;gap:28px;margin-top:16px}
-  .s7-head{font-size:26px;margin-bottom:14px}
+  /* ══════════════════════════════════
+     SLIDE 7 — CONTATO
+  ══════════════════════════════════ */
+  .s7{padding:32px 22px 90px;justify-content:flex-start;overflow-y:auto}
+  .s7-grid{grid-template-columns:1fr;gap:24px;margin-top:14px}
+  .s7-head{font-size:24px;margin-bottom:14px}
   .s7-desc{font-size:13px}
-  .s7-logo{margin-top:20px;gap:12px}
+  .s7-logo{margin-top:18px;gap:12px}
   .s7-logo img{width:52px;height:52px}
   .s7-logoname{font-size:18px}
   .s7-logosub{font-size:10px}
-  .fn{margin-top:20px;font-size:10px}
+  .fn{margin-top:18px;padding-top:16px;font-size:10px}
+  .links{gap:10px}
   .lnk{padding:13px 16px;gap:12px;border-radius:10px;font-size:13px}
   .li{width:36px;height:36px;font-size:16px;border-radius:8px}
   .ll{font-size:9px}
   .lv{font-size:13px}
-
-  /* ── SLIDE B extra photo ── */
-  .s3b-content img{height:140px !important}
-
-  /* Common sec-label adjustments */
-  .sec-label{font-size:10px;letter-spacing:2px;margin-bottom:8px}
-  .s_tbr-overline{font-size:10px;letter-spacing:2px}
 }
 
 
@@ -717,7 +815,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <span style="background:rgba(87,196,90,0.12);border:1px solid rgba(87,196,90,0.3);color:var(--green-light);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:20px">🥇 Campeã Regional Desafio Prático</span>
     </div>
     <div style="margin-top:16px">
-      <img src="./fotos-media-kit/multidao-etapa-nacional.jpg" alt="Multidão etapa nacional" style="width:100%;height:200px;object-fit:cover;border-radius:12px;object-position:center 70%">
+      <img src="./fotos-media-kit/multidao-etapa-nacional.jpg" alt="Multidão etapa nacional" style="width:100%;height:300px;object-fit:cover;border-radius:12px;object-position:center 70%">
       <p class="photo-caption">Etapa nacional TBR — centenas de equipes de todo o Brasil</p>
     </div>
   </div>
@@ -825,7 +923,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <div class="ct">🥉 Bronze</div>
       <div class="cn">Bronze</div>
       <div class="cv">Vagas abertas</div>
-      <div class="cp" style="color:var(--bronze)">R$ 200</div>
+      <div class="cp" style="color:var(--bronze)">R$ 150</div>
       <div class="cpn" style="color:var(--gray)">por temporada</div>
       <div class="cdiv" style="background:rgba(155,91,42,0.2)"></div>
       <ul class="cbs">
@@ -879,7 +977,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       </a>
       <a class="lnk" href="#">
         <div class="li sk">🏫</div>
-        <div><div class="ll">Escola</div><div class="lv">Colégio Batista Mineiro — Granja Marileusa</div></div>
+        <div><div class="ll">Escola</div><div class="lv">Colégio Batista Mineiro — Unidade Martins</div></div>
       </a>
     </div>
   </div>
