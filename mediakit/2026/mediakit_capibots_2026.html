@@ -333,18 +333,23 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 
   /* ══════════════════════════════════
      SLIDE 2 — QUEM SOMOS
-     (scroll vertical habilitado)
+     Coluna única com scroll
   ══════════════════════════════════ */
   .s2{
     flex-direction:column;
     justify-content:flex-start;
-    padding:32px 22px 90px;  /* espaço embaixo para nav */
+    padding:28px 20px 90px;
     overflow-y:auto;
   }
-  .sec-title{font-size:24px;margin-bottom:16px}
+  .sec-title{font-size:24px;margin-bottom:14px}
   .sec-label{font-size:10px;letter-spacing:2px;margin-bottom:8px}
-  .s2-grid{grid-template-columns:1fr;gap:18px}
-  .quem-text{font-size:13px;margin-bottom:14px}
+  /* grade vira coluna única — sem exceção */
+  .s2-grid{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:18px;
+  }
+  .quem-text{font-size:13px;margin-bottom:12px}
   .stats{grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
   .stat-card{padding:14px 12px;border-radius:10px}
   .stat-n{font-size:22px}
@@ -357,31 +362,32 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 
   /* ══════════════════════════════════
      SLIDE A — EQUIPE FOTOS
-     Imagem topo (destaque) + conteúdo abaixo com scroll
+     Banner no topo + coluna única com scroll
   ══════════════════════════════════ */
   .s2b{
-    flex-direction:column;
+    display:flex !important;
+    flex-direction:column !important;
     overflow-y:auto;
   }
   .s2b-left{
-    flex:none;
-    width:100%;
-    height:52vw;   /* ~52% da largura — foto destaque generosa */
-    min-height:200px;
-    max-height:260px;
+    flex:none !important;
+    width:100% !important;
+    height:48vw;
+    min-height:190px;
+    max-height:250px;
     overflow:hidden;
     position:relative;
   }
-  /* gradiente suave na base da foto para transição ao conteúdo */
   .s2b-left::after{
     content:'';position:absolute;bottom:0;left:0;right:0;height:40px;
     background:linear-gradient(to bottom,transparent,#111);
   }
   .s2b-right{
-    flex:none;
-    padding:22px 22px 90px;
+    flex:none !important;
+    width:100% !important;
+    padding:22px 20px 90px !important;
     gap:14px;
-    justify-content:flex-start;
+    display:flex;flex-direction:column;justify-content:flex-start;
   }
   .s2b-right .sec-title{color:white;font-size:21px}
   .s2b-right .sec-label{color:var(--orange-light)}
@@ -408,33 +414,41 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 
   /* ══════════════════════════════════
      SLIDE B — PÓDIO FOTOS
-     Imagem topo + conteúdo com scroll
+     Banner no topo + coluna única com scroll
   ══════════════════════════════════ */
   .s3b{
-    flex-direction:column;
+    display:flex !important;
+    flex-direction:column !important;
     overflow-y:auto;
   }
+  /* bloco de fotos vira banner horizontal no topo */
   .s3b-photos{
-    flex:none;
-    width:100%;
-    height:52vw;
-    min-height:200px;
-    max-height:260px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:1fr;
+    flex:none !important;
+    width:100% !important;
+    height:48vw !important;
+    min-height:190px !important;
+    max-height:250px !important;
+    display:block !important;   /* uma foto só, as outras ocultas */
     overflow:hidden;
+    position:relative;
   }
-  .s3b-photos img:first-child{grid-row:1}
+  /* mostra apenas a primeira foto como banner */
+  .s3b-photos img{
+    position:absolute;inset:0;
+    width:100% !important;height:100% !important;
+    object-fit:cover;display:none !important;
+  }
+  .s3b-photos img:first-child{display:block !important}
+  /* conteúdo em coluna única abaixo */
   .s3b-content{
-    flex:none;
-    padding:22px 22px 90px;
+    flex:none !important;
+    width:100% !important;
+    padding:22px 20px 90px !important;
     gap:14px;
-    justify-content:flex-start;
+    display:flex;flex-direction:column;justify-content:flex-start;
   }
   .s3b-content .sec-title{font-size:21px;max-width:100%}
-  /* foto extra dentro do conteúdo */
-  .s3b-content img{height:130px !important;width:100%;object-fit:cover;border-radius:10px}
+  .s3b-content img{height:160px !important;width:100% !important;object-fit:cover;border-radius:10px}
 
   /* ══════════════════════════════════
      SLIDE 4 — VISIBILIDADE
@@ -451,30 +465,32 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 
   /* ══════════════════════════════════
      SLIDE C — MÍDIA / PATROCÍNIO FOTOS
-     Imagem topo + conteúdo com scroll
+     Banner no topo + coluna única com scroll
   ══════════════════════════════════ */
   .s_pat{
-    flex-direction:column;
+    display:flex !important;
+    flex-direction:column !important;
     overflow-y:auto;
   }
   .s_pat-img{
-    flex:none;
-    width:100%;
-    height:52vw;
-    min-height:200px;
-    max-height:260px;
+    flex:none !important;
+    width:100% !important;
+    height:48vw;
+    min-height:190px;
+    max-height:250px;
     position:relative;
     overflow:hidden;
   }
-  /* gradiente vai para baixo agora (layout vertical) */
+  /* gradiente de baixo para transição suave ao conteúdo */
   .s_pat-img::after{
-    background:linear-gradient(to bottom,transparent 55%,#111 100%);
+    background:linear-gradient(to bottom,transparent 50%,#111 100%) !important;
   }
   .s_pat-content{
-    flex:none;
-    padding:22px 22px 90px;
+    flex:none !important;
+    width:100% !important;
+    padding:22px 20px 90px !important;
     gap:14px;
-    justify-content:flex-start;
+    display:flex;flex-direction:column;justify-content:flex-start;
   }
   .s_pat-content .sec-title{font-size:21px}
   .s_pat-shirts{grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
